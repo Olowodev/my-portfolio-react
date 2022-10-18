@@ -1,0 +1,51 @@
+.about {
+    height: 100vh;
+    /*position: fixed;
+    top: 0;
+    left: 0;*/
+    width: 100%;
+    /*z-index: 2;*/
+    overflow-y: hidden;
+    background: linear-gradient(116.82deg, #be04ff 0%, #7100bd 100%);
+}
+
+.aboutContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+.aboutBox {
+    position: absolute;
+    z-index: 1;
+    stroke-dasharray: 1768;
+    stroke-dashoffset: 1768;
+    /*animation: dash 5s linear infinite;*/
+}
+
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.aboutContainer h1 {
+    font-size: 12.3vw;
+    position: absolute;
+}
+
+.aboutContainer h1 span:first-child {
+    z-index: 2;
+    position: relative;
+}
+
+.aboutContainer p {
+    text-align: center;
+    font-size: 6.5vw;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.2);
+    transform: translateY(600px);
+}

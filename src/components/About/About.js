@@ -34,65 +34,6 @@ useEffect(()=>{
 //     cursor.current.style.marginTop = '0px';
 // }
 
-useEffect(()=> {
-    
-    let ctx = gsap.context(() => {
-    gsap.timeline(
-      {
-        scrollTrigger: {
-          trigger: '#about',
-          markers: true,
-          start: 'top top',
-          end: '+=100%',
-          pin: true,
-          scrub: true,
-          onToggle: self => self.isActive && setScreen(1)
-        }
-      }
-    )
-    .to('#svg', {
-      strokeDashoffset: 0,
-      duration: 13
-    })
-    .to('#text', {
-      y: -100,
-      opacity: 0,
-      duration: 5
-    })
-    .to('#svg', {
-      opacity: 0,
-      duration: 5
-    })
-    .to('#story', {
-      y: -700,
-      duration: 20
-    })
-    
-})
-
-return () => ctx.revert();
-  }, [setScreen])
-
-  useEffect(()=> {
-    const changeColorToWhite = (p) => {
-      gsap.to(p, {color: 'white'})
-    }
-    const changeColorToGrey = (p) => {
-      gsap.to(p, {color: 'rgba(255, 255, 255, 0.2)'})
-    }
-    window.addEventListener('scroll', ()=> {
-     const div = gsap.getProperty('#story', 'y')
-    let ps = gsap.utils.toArray('#p')
-      ps.forEach((p, i) => {
-        if (div < (-355 - (75 * i))) {
-          changeColorToWhite(p)
-        } else if (div === 0) {
-          changeColorToGrey(p)
-        }
-      })
-      
-  })
-})
 
 
     return (

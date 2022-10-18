@@ -21,11 +21,10 @@ const SlideShaderMaterial = shaderMaterial(
 
 extend({SlideShaderMaterial})
 
-const Picture = ({cover, index, setScreen}) => {
+const Picture = ({cover, index, setScreen, state}) => {
     const ref = useRef()
     const meshRef = useRef()
     const ref2 = useRef()
-    const [state, setState] = useState({x: 0})
     //  useEffect(() => {
     //      const stuff = ref2.current
     //      console.log(stuff)
@@ -36,32 +35,6 @@ const Picture = ({cover, index, setScreen}) => {
     const mouse = (e) => {
         ref.current.uMouse = e.point
     }
-    useEffect(() => {
-        const tl = gsap.timeline(
-            {
-                scrollTrigger: {
-                  trigger: '#work',
-                  start: 'center center',
-                  end: '+=100%',
-                  pin: true,
-                  anticipatePin: 1,
-                  scrub: true,
-                  onToggle: self => self.isActive && setScreen(2)
-                },
-                defaults: {ease: 'none'}
-              }
-        );
-        tl.to(state, {
-          x: -2.5,
-        })
-
-        ScrollTrigger.create( {
-            trigger: '#contact',
-            start: self => self.previous().end,
-            onToggle: self => self.isActive && setScreen(3)
-          }
-        )
-      }, [state, setScreen])
     useFrame(({clock}) => (ref.current.uTime = clock.getElapsedTime()))
     useFrame(() => (
         // eslint-disable-next-line no-sequences
@@ -80,7 +53,7 @@ const Picture = ({cover, index, setScreen}) => {
         </>
     )
 }
-const Work = ({cursor, setScreen}) => {
+const Work = ({cursor, setScreen, state}) => {
 
     // useEffect(() => {
     //     ScrollTrigger.create({
@@ -113,14 +86,14 @@ const Work = ({cursor, setScreen}) => {
                 </div>
             </div>
             
-            {/* <Canvas style={{position: 'absolute', left: 0, top: 0, zIndex: 2}} camera={{fov: 8, position: [0, 0, 5]}} >
+            <Canvas style={{position: 'absolute', left: 0, top: 0, zIndex: 2}} camera={{fov: 8, position: [0, 0, 5]}} >
                 
                 <Suspense fallback={null}>
                     {workSlideShow.map((slide, index) => (
-                        <Picture setScreen={setScreen} key={slide.id} index={index} {...slide} />
+                        <Picture state={state} setScreen={setScreen} key={slide.id} index={index} {...slide} />
                     ))}
                 </Suspense>
-            </Canvas> */}
+            </Canvas>
             
             <div className={styles.absoluteCircle1}></div>
             <div className={styles.absoluteCircle2}></div>

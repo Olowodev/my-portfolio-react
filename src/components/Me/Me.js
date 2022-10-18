@@ -54,7 +54,6 @@ const Me = ({cursor, setScreen}) => {
     }
     
     return (
-        <>
         
         <section data-scroll-section id='me' className={styles.me}>
         
@@ -80,7 +79,6 @@ const Me = ({cursor, setScreen}) => {
                 </Suspense>
             </Canvas> 
         </section>
-        </>
     );
 }
 
